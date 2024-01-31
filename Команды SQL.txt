@@ -1,0 +1,5 @@
+CREATE DATABASE "MyBase29012024" WITH ENCODING 'UTF8'; - создание базы с кодировкой
+CREATE USER "Andrey"; - создание пользователя
+ALTER TABLE "MyBase29012024" OWNER TO "Andrey"; - изменили владельца таблицы
+psql\! chcp 1251 - сменить кодировку на русский
+set client_encoding='win1251'; - сменить кодировку на русский
