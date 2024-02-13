@@ -47,6 +47,8 @@ DROP TABLE "positions"; // удаление таблицы
 
  ALTER TABLE products ALTER COLUMN price TYPE numeric(10,2); // изменить тип данных в столбце
 
+ALTER TABLE "products" OWNER TO "AndreyDol"; // сменить владельца таблицы "products"
+
 // Создание таблицы
 
 CREATE TABLE companies (code_companie serial PRIMARY KEY, name_companie character varying(50));
