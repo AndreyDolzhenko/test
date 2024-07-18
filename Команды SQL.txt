@@ -38,6 +38,7 @@ CREATE DATABASE "MyBase29012024" WITH ENCODING 'UTF8'; - создание баз
 CREATE USER "Andrey"; - создание пользователя
 ALTER TABLE "MyBase29012024" OWNER TO "Andrey"; - изменили владельца таблицы
 psql\! chcp 1251 - сменить кодировку на русский
+truncate nameTable; - очистить таблицу от содержимого
 CREATE TABLE companies (code_companie serial PRIMARY KEY, name_companie character varying(50)); - создание таблицы
 DROP TABLE "name"; - удаление таблицы
 -------------------------------------
