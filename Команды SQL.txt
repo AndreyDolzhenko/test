@@ -41,6 +41,10 @@ psql\! chcp 1251 - сменить кодировку на русский
 truncate nameTable; - очистить таблицу от содержимого
 CREATE TABLE companies (code_companie serial PRIMARY KEY, name_companie character varying(50)); - создание таблицы
 DROP TABLE "name"; - удаление таблицы
+
+CREATE DATABASE "MSKLearningPlatform";
+CREATE USER AndreyDol WITH PASSWORD "123456";
+ALTER DATABASE "MSKLearningPlatform" OWNER TO AndreyDol;
 -------------------------------------
 DROP TABLE "positions"; // удаление таблицы
 
