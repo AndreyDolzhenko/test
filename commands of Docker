@@ -1,0 +1,40 @@
+Загрука бэкенда
+docker build -t andreydolzhenko/spcc-backend:0.1 .   - билдим новый образ
+docker push andreydolzhenko/spcc-backend:0.1         - пушим образ на докер хаб
+docker pull andreydolzhenko/spcc-frontend:0.7        - пуллим образ на докер хаб
+docker ps -a                    - смотрим контейнеры
+docker stop CONTAINER ID        - останавливаем контейнер
+docker rm CONTAINER ID          - удаляем контейнер
+docker images                   - смотрим образы 
+docker rmi IMAGE ID             – удалить образ
+  
+docker exec -it postgres psql -U andreydol -d SCC -c "\du"    - заходим в образ на хосте и смотрим всех юзеров базы
+  
+  Создаем сеть на сервере
+docker network create spcc-network
+  
+  Запускаем контейнер Postgres
+docker run -d --name postgres --network spcc-network -e POSTGRES_USER=andreydol -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=SCC -p 5433:5432 -v postgres_data:/var/lib/postgresql/data postgres:15-alpine
+  
+  Запускаем контейнер для Бэк
+docker run -d --name backend --network spcc-network -e DB_HOST=postgres -e DB_USER=andreydol -e DB_PASSWORD=123456 -e DB_NAME=SCC -e DB_PORT=5432 -p 3000:3000 andreydolzhenko/spcc-backend:0.6
+
+  зайти в код контейнера
+docker exec -it ff72b1707284d5067f4669c066d136e55c7d54433e01967dcb51c3094a67bdbf sh
+
+1.	Все ли изменения сохранены без гитхаба, именно в VS коде.
+2.	Командой docker ps смотрим все запущенные containers. Если нужны все контейнеры docker ps -all
+Удаление контейнера
+3.	docker stop CONTAINER ID
+4.	docker rm CONTAINER ID
+5.	docker images смотрим образы 
+6.	docker images –a 
+7.	docker rmi IMAGE ID – удалить образ
+8.	docker pull wqqe/ssc:0.2
+9.	docker build -t wqqe/ssc:0.3 .      создаем образ на основе докер файла
+10.	Подтянуть образ на сервер и запустить
+11.	docker push wqqe/ssc:0.3 пушим в докерхаб
+12.	docker run -d -p 8080:80 --name scc-frontend wqqe/scc-frontend:0.7 – запускаем контейнер на основе нового образа
+13.	docker run -d -p 8080:80 CONTAINER ID – запускаем контейнер по ID образа ФРОНТ
+14.	docker run -d -p 3000:5000
+15.	docker container restart 3ea1225213c0    - запустить остановленный контейнер
