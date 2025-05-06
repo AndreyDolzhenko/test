@@ -1,3 +1,7 @@
+docker run -d -p 8081:80 IMAGE ID
+8081 - порт на вашем сервере
+80 - порт внутри контейнера (не пересекается с другими контейнерами)
+
 Загрука бэкенда
 docker build -t andreydolzhenko/spcc-backend:0.1 .   - билдим новый образ
 docker push andreydolzhenko/spcc-backend:0.1         - пушим образ на докер хаб
